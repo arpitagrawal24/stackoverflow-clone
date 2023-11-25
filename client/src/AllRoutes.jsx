@@ -1,6 +1,7 @@
 import App from "./App";
 import Home from "./Pages/Home/Home";
 import Auth from "./Pages/Auth/Auth";
+import AskQuestion from "./Pages/AskQuestion/AskQuestion";
 
 export const AllRoutes = [
   {
@@ -15,10 +16,10 @@ export const AllRoutes = [
         path: "Auth",
         element: <Auth />,
       },
-      // {
-      //   path: "AskQuestion",
-      //   element: <AskQuestion />,
-      // },
+      {
+        path: "AskQuestion",
+        element: <AskQuestion />,
+      },
       // {
       //   path: "Questions",
       //   element: <Questions />,
