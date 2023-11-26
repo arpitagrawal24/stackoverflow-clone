@@ -2,6 +2,8 @@ import App from "./App";
 import Home from "./Pages/Home/Home";
 import Auth from "./Pages/Auth/Auth";
 import AskQuestion from "./Pages/AskQuestion/AskQuestion";
+import Questions from "./Pages/Questions/Questions";
+import DisplayQuestion from "./Pages/Questions/DisplayQuestion";
 
 export const AllRoutes = [
   {
@@ -20,14 +22,14 @@ export const AllRoutes = [
         path: "AskQuestion",
         element: <AskQuestion />,
       },
-      // {
-      //   path: "Questions",
-      //   element: <Questions />,
-      // },
-      // {
-      //   path: "Questions/:id",
-      //   element: <DisplayQuestion />,
-      // },
+      {
+        path: "Questions",
+        element: <Questions />,
+      },
+      {
+        path: "Questions/:id",
+        element: <DisplayQuestion />,
+      },
       // {
       //   path: "Tags",
       //   element: <Tags />,

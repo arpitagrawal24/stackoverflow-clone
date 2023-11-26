@@ -9,7 +9,7 @@ const HomeMainbar = () => {
 
   const questionsList = [
     {
-      id: 1,
+      _id: 1,
       upVote: 3,
       downVote: 1,
       noOfAnswers: 2,
@@ -17,9 +17,16 @@ const HomeMainbar = () => {
       questionBody: "It meant to be",
       questionTags: ["java", "node js", "react js", "mongodb"],
       userPosted: "mano",
-      askedOn: "jan 1"
+      askedOn: "jan 1",
+      userId: 1,
+      answer: [{
+        answerBody: "Answer",
+        userAnswered: 'kumar',
+        answeredOn: "jan 2",
+        userId: 2,
+      }]
     }, {
-      id: 2,
+      _id: 2,
       upVote: 0,
       downVote: 0,
       noOfAnswers: 0,
@@ -27,9 +34,16 @@ const HomeMainbar = () => {
       questionBody: "It meant to be",
       questionTags: ["javascript", "R", "python"],
       userPosted: "mano",
-      askedOn: "2023 jan 1"
+      askedOn: "2023 jan 1",
+      userId: 1,
+      answer: [{
+        answerBody: "Answer",
+        userAnswered: 'kumar',
+        answeredOn: "jan 2",
+        userId: 2,
+      }]
     }, {
-      id: 3,
+      _id: 3,
       upVote: 1,
       downVote: 0,
       noOfAnswers: 0,
@@ -37,7 +51,14 @@ const HomeMainbar = () => {
       questionBody: "It meant to be",
       questionTags: ["javascript", "R", "python"],
       userPosted: "mano",
-      askedOn: "Jan 1"
+      askedOn: "Jan 1",
+      userId: 1,
+      answer: [{
+        answerBody: "Answer",
+        userAnswered: 'kumar',
+        answeredOn: "jan 2",
+        userId: 2,
+      }]
     }
   ];
 
