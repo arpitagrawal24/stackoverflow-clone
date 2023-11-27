@@ -1,5 +1,3 @@
-import React from "react";
-
 import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import TagsList from "./TagsList";
 import "./Tags.css";
