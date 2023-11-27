@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
 import logo from "../../assets/logo.png";
 import search from "../../assets/search-solid.svg";
@@ -19,6 +21,17 @@ const Navbar = ({ handleSlideIn }) => {
     navigate("/");
     dispatch(setCurrentUser(null));
   };
+
+  useEffect(() => {
+    const token = User?.token;
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        handleLogout();
+      }
+    }
+    dispatch(setCurrentUser(JSON.parse(localStorage.getItem("Profile"))));
+  }, [User?.token, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <nav className="main-nav">
