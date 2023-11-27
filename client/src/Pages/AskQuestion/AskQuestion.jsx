@@ -1,20 +1,34 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import "./AskQuestion.css";
+import { askQuestion } from "../../actions/question";
 
 const AskQuestion = () => {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionBody, setQuestionBody] = useState("");
   const [questionTags, setQuestionTags] = useState("");
 
-
-  const User = null;
+  const dispatch = useDispatch();
+  const User = useSelector((state) => state.currentUserReducer);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (User) {
       if (questionTitle && questionBody && questionTags) {
-        // ckeck 
+        dispatch(
+          askQuestion(
+            {
+              questionTitle,
+              questionBody,
+              questionTags,
+              userPosted: User.result.name,
+            },
+            navigate
+          )
+        );
       } else alert("Please enter all the fields");
     } else alert("Login to ask question");
   };

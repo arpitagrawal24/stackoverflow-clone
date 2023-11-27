@@ -1,66 +1,16 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import "./HomeMainbar.css";
 import QuestionList from "./QuestionList";
 
 const HomeMainbar = () => {
   const location = useLocation();
-  const user = 1;   // ckeck it later
+  const user = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
 
-  const questionsList = [
-    {
-      _id: 1,
-      upVote: 3,
-      downVote: 1,
-      noOfAnswers: 2,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["java", "node js", "react js", "mongodb"],
-      userPosted: "mano",
-      askedOn: "jan 1",
-      userId: 1,
-      answer: [{
-        answerBody: "Answer",
-        userAnswered: 'kumar',
-        answeredOn: "jan 2",
-        userId: 2,
-      }]
-    }, {
-      _id: 2,
-      upVote: 0,
-      downVote: 0,
-      noOfAnswers: 0,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["javascript", "R", "python"],
-      userPosted: "mano",
-      askedOn: "2023 jan 1",
-      userId: 1,
-      answer: [{
-        answerBody: "Answer",
-        userAnswered: 'kumar',
-        answeredOn: "jan 2",
-        userId: 2,
-      }]
-    }, {
-      _id: 3,
-      upVote: 1,
-      downVote: 0,
-      noOfAnswers: 0,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["javascript", "R", "python"],
-      userPosted: "mano",
-      askedOn: "Jan 1",
-      userId: 1,
-      answer: [{
-        answerBody: "Answer",
-        userAnswered: 'kumar',
-        answeredOn: "jan 2",
-        userId: 2,
-      }]
-    }
-  ];
+  const questionsList = useSelector((state) => state.questionsReducer);
+
 
   const checkAuth = () => {
     if (user === null) {
@@ -88,10 +38,8 @@ const HomeMainbar = () => {
           <h1>Loading...</h1>
         ) : (
           <>
-            {/* <p>{questionsList.data.length} questions</p> */}
-            <p>{questionsList.length} questions</p>
-            {/* <QuestionList questionsList={questionsList.data} /> */}
-            <QuestionList questionsList={questionsList} />
+            <p>{questionsList.data.length} questions</p>
+            <QuestionList questionsList={questionsList.data} />
           </>
         )}
       </div>

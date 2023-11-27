@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import copy from "copy-to-clipboard";
 
@@ -8,71 +9,78 @@ import downvote from "../../assets/sort-down.svg";
 import "./Questions.css";
 import Avatar from "../../components/Avatar/Avatar";
 import DisplayAnswer from "./DisplayAnswer";
+import {
+  postAnswer,
+  deleteQuestion,
+  voteQuestion,
+} from "../../actions/question";
 
 const QuestionsDetails = () => {
   const { id } = useParams();
 
-  const questionsList = [
-    {
-      _id: '1',
-      upVote: 3,
-      downVote: 1,
-      noOfAnswers: 2,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["java", "node js", "react js", "mongodb"],
-      userPosted: "mano",
-      askedOn: "jan 1",
-      userId: 1,
-      answer: [{
-        answerBody: "Answer",
-        userAnswered: 'kumar',
-        answeredOn: "jan 2",
-        userId: 2,
-      }]
-    }, {
-      _id: '2',
-      upVote: 0,
-      downVote: 0,
-      noOfAnswers: 0,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["javascript", "R", "python"],
-      userPosted: "mano",
-      askedOn: "2023 jan 1",
-      userId: 1,
-      answer: [{
-        answerBody: "Answer",
-        userAnswered: 'kumar',
-        answeredOn: "jan 2",
-        userId: 2,
-      }]
-    }, {
-      _id: '3',
-      upVote: 1,
-      downVote: 0,
-      noOfAnswers: 0,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["javascript", "R", "python"],
-      userPosted: "mano",
-      askedOn: "Jan 1",
-      userId: 1,
-      answer: [{
-        answerBody: "Answer",
-        userAnswered: 'kumar',
-        answeredOn: "jan 2",
-        userId: 2,
-      }]
-    }
-  ];
+  const questionsList = useSelector((state) => state.questionsReducer);
+
+  // const questionsList = [
+  //   {
+  //     _id: '1',
+  //     upVote: 3,
+  //     downVote: 1,
+  //     noOfAnswers: 2,
+  //     questionTitle: "What is a function?",
+  //     questionBody: "It meant to be",
+  //     questionTags: ["java", "node js", "react js", "mongodb"],
+  //     userPosted: "mano",
+  //     askedOn: "jan 1",
+  //     userId: 1,
+  //     answer: [{
+  //       answerBody: "Answer",
+  //       userAnswered: 'kumar',
+  //       answeredOn: "jan 2",
+  //       userId: 2,
+  //     }]
+  //   }, {
+  //     _id: '2',
+  //     upVote: 0,
+  //     downVote: 0,
+  //     noOfAnswers: 0,
+  //     questionTitle: "What is a function?",
+  //     questionBody: "It meant to be",
+  //     questionTags: ["javascript", "R", "python"],
+  //     userPosted: "mano",
+  //     askedOn: "2023 jan 1",
+  //     userId: 1,
+  //     answer: [{
+  //       answerBody: "Answer",
+  //       userAnswered: 'kumar',
+  //       answeredOn: "jan 2",
+  //       userId: 2,
+  //     }]
+  //   }, {
+  //     _id: '3',
+  //     upVote: 1,
+  //     downVote: 0,
+  //     noOfAnswers: 0,
+  //     questionTitle: "What is a function?",
+  //     questionBody: "It meant to be",
+  //     questionTags: ["javascript", "R", "python"],
+  //     userPosted: "mano",
+  //     askedOn: "Jan 1",
+  //     userId: 1,
+  //     answer: [{
+  //       answerBody: "Answer",
+  //       userAnswered: 'kumar',
+  //       answeredOn: "jan 2",
+  //       userId: 2,
+  //     }]
+  //   }
+  // ];
 
   const [Answer, setAnswer] = useState("");
   const Navigate = useNavigate();
-  const User = null;
-
+  const dispatch = useDispatch();
+  const User = useSelector((state) => state.currentUserReducer);
   const location = useLocation();
-  const url = "http://localhost:3000";
+  const url = "http://localhost:3000"; // change it later
 
   const handlePostAns = (e, answerLength) => {
     e.preventDefault();
@@ -83,6 +91,14 @@ const QuestionsDetails = () => {
       if (Answer === "") {
         alert("Enter an answer before submitting");
       } else {
+        dispatch(
+          postAnswer({
+            id,
+            noOfAnswers: answerLength + 1,
+            answerBody: Answer,
+            userAnswered: User.result.name,
+          })
+        );
         setAnswer("");
       }
     }
@@ -94,6 +110,7 @@ const QuestionsDetails = () => {
   };
 
   const handleDelete = () => {
+    dispatch(deleteQuestion(id, Navigate));
   };
 
   const handleUpVote = () => {
@@ -101,7 +118,7 @@ const QuestionsDetails = () => {
       alert("Login or Signup to up vote a question");
       Navigate("/Auth");
     } else {
-      //
+      dispatch(voteQuestion(id, "upVote"));
     }
   };
 
@@ -110,18 +127,17 @@ const QuestionsDetails = () => {
       alert("Login or Signup to down vote a question");
       Navigate("/Auth");
     } else {
-      //
+      dispatch(voteQuestion(id, "downVote"));
     }
   };
 
-  return (
+return (
     <div className="question-details-page">
       {questionsList.data === null ? (
         <h1>Loading...</h1>
       ) : (
         <>
-          {/* {questionsList.data // ckeck it later */}
-          {questionsList
+          {questionsList.data
             .filter((question) => question._id === id)
             .map((question) => (
               <div key={question._id}>

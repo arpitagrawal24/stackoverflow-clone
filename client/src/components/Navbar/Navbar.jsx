@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import logo from "../../assets/logo.png";
 import search from "../../assets/search-solid.svg";
@@ -6,14 +7,23 @@ import bars from "../../assets/bars-solid.svg";
 import Avatar from "../../components/Avatar/Avatar";
 
 import "./Navbar.css";
+import { setCurrentUser } from "../../actions/currentUser";
 
-const Navbar = () => {
-  const User = null;
+const Navbar = ({ handleSlideIn }) => {
+  const dispatch = useDispatch();
+  var User = useSelector((state) => state.currentUserReducer);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
+    dispatch(setCurrentUser(null));
+  };
 
   return (
     <nav className="main-nav">
       <div className="navbar">
-        <button className="slide-in-icon" onClick={() => { }}>
+        <button className="slide-in-icon" onClick={() => handleSlideIn()}>
           <img src={bars} alt="bars" width="15" />
         </button>
         <div className="navbar-1">
@@ -55,7 +65,7 @@ const Navbar = () => {
                   {User.result.name.charAt(0).toUpperCase()}
                 </Link>
               </Avatar>
-              <button className="nav-item nav-links" >
+              <button className="nav-item nav-links" onClick={handleLogout}>
                 Log out
               </button>
             </>
