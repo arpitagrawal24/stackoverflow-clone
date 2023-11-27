@@ -3,10 +3,10 @@ import TagsList from "./TagsList";
 import "./Tags.css";
 import { tagsList } from "./tagList";
 
-const Tags = ({ slideIn, handleSlideIn }) => {
+const Tags = () => {
   return (
     <div className="home-container-1">
-      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
+      <LeftSidebar />
       <div className="home-container-2">
         <h1 className="tags-h1">Tags</h1>
         <p className="tags-p">

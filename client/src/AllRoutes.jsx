@@ -6,6 +6,7 @@ import Questions from "./Pages/Questions/Questions";
 import DisplayQuestion from "./Pages/Questions/DisplayQuestion";
 import Tags from "./Pages/Tags/Tags";
 import Users from "./Pages/Users/Users";
+import UserProfile from "./Pages/UserProfile/UserProfile";
 
 
 export const AllRoutes = [
@@ -41,10 +42,10 @@ export const AllRoutes = [
         path: "Users",
         element: <Users />,
       },
-      // {
-      //   path: "Users/:id",
-      //   element: <UserProfile />,
-      // },
+      {
+        path: "Users/:id",
+        element: <UserProfile />,
+      },
     ],
   },
 ];
