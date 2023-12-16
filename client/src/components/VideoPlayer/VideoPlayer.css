@@ -1,0 +1,40 @@
+.editor-video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px;
+}
+
+.editor-video-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.editor-video-input div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: auto;
+}
+
+.editor-video-input div input button{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #100f0f;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.editor-show-videos {
+    display: flex;
+    flex-wrap:wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 5px;
+}

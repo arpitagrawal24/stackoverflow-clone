@@ -48,6 +48,16 @@ const LeftSidebar = () => {
               <p>Users</p>
             </NavLink>
           </button>
+          <button className="nav-btn">
+            <NavLink
+              to="/Call"
+              className="side-nav-links"
+              activeclassname="active"
+              style={{ paddingLeft: "40px" }}
+            >
+              <p>Make a Call</p>
+            </NavLink>
+          </button>
         </div>
       </nav>
     </div>

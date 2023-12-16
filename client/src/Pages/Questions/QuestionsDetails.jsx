@@ -14,6 +14,8 @@ import {
   deleteQuestion,
   voteQuestion,
 } from "../../actions/question";
+import ShowCode from "../../components/CodeEditor/ShowCode";
+import ShowVideo from "../../components/VideoPlayer/ShowVideo";
 
 const QuestionsDetails = () => {
   const { id } = useParams();
@@ -107,7 +109,10 @@ return (
                       />
                     </div>
                     <div style={{ width: "100%" }}>
-                      <p className="question-body">{question.questionBody}</p>
+                      {console.log(question.questionBody)}
+                      <p className="question-body" dangerouslySetInnerHTML={{ __html: question.questionBody }} />
+                      <ShowCode questionCode={question.questionCode} />
+                      <ShowVideo questionVedios={question.questionVedios} />
                       <div className="question-details-tags">
                         {question.questionTags.map((tag) => (
                           <p key={tag}>{tag}</p>
