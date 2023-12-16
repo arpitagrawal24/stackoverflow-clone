@@ -35,6 +35,7 @@ const AskQuestion = () => {
           )
         );
       }
+      // else alert("Please enter all the fields");
     } else alert("Login to ask question");
   };
 
