@@ -1,0 +1,53 @@
+.editor-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 5px;
+    border: 1px solid #100f0f;
+    border-radius: 4px;
+    position: sticky;
+    padding: 5px;
+}
+
+.editor-btns button {
+    padding: 5px;
+    border: 1px solid #100f0f;
+}
+
+.editor-btns button:hover {
+    background-color: #100f0f;
+    color: #fff;
+}
+
+.editor-btns button:active {
+    background-color: #100f0f;
+    color: #fff;
+}
+
+.editor-btns button:focus {
+    background-color: #100f0f;
+    color: #fff;
+}
+
+.editor-btns select {
+    padding: 5px;
+    border: 1px solid #100f0f;
+}
+
+.color-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-emphasis-color: #100f0f;
+    padding: 5px;
+    border: 1px solid #100f0f;
+    border-radius: 4px;
+}
+
+.color-box input{
+    padding: 5px;
+    border: 1px solid #100f0f;
+    border-radius: 4px;
+}

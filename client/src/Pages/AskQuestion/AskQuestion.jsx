@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 import "./AskQuestion.css";
 import { askQuestion } from "../../actions/question";
+import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
 
 const AskQuestion = () => {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionBody, setQuestionBody] = useState("");
   const [questionTags, setQuestionTags] = useState("");
+  const [questionVedios, setQuestionVedios] = useState([])
+  const [questionCode, setQuestionCode] = useState([])
 
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
@@ -23,26 +26,23 @@ const AskQuestion = () => {
             {
               questionTitle,
               questionBody,
+              questionVedios,
+              questionCode,
               questionTags,
               userPosted: User.result.name,
             },
             navigate
           )
         );
-      } else alert("Please enter all the fields");
+      }
     } else alert("Login to ask question");
   };
 
-  const handleEnter = (e) => {
-    if (e.key === "Enter") {
-      setQuestionBody(questionBody + "\n");
-    }
-  };
   return (
     <div className="ask-question">
       <div className="ask-ques-container">
         <h1>Ask a public Question</h1>
-        <form onSubmit={handleSubmit}>
+        <div >
           <div className="ask-form-container">
             <label htmlFor="ask-ques-title">
               <h4>Title</h4>
@@ -65,16 +65,15 @@ const AskQuestion = () => {
                 Include all the information someone would need to answer your
                 question
               </p>
-              <textarea
-                name=""
+              <RichTextEditor
                 id="ask-ques-body"
-                onChange={(e) => {
-                  setQuestionBody(e.target.value);
-                }}
-                cols="30"
-                rows="10"
-                onKeyPress={handleEnter}
-              ></textarea>
+                questionBody={questionBody}
+                setQuestionBody={setQuestionBody}
+                questionVedios={questionVedios}
+                setQuestionVedios={setQuestionVedios}
+                questionCode={questionCode}
+                setQuestionCode={setQuestionCode}
+              />
             </label>
             <label htmlFor="ask-ques-tags">
               <h4>Tags</h4>
@@ -89,12 +88,13 @@ const AskQuestion = () => {
               />
             </label>
           </div>
-          <input
-            type="submit"
-            value="Reivew your question"
+          <button
             className="review-btn"
-          />
-        </form>
+            onClick={handleSubmit}
+          >
+            Reivew your question
+          </button>
+        </div>
       </div>
     </div>
   );

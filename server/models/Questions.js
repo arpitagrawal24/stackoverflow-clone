@@ -9,6 +9,12 @@ const QuestionSchema = mongoose.Schema({
     type: String,
     required: "Question must have a body",
   },
+  questionVedios: {
+    type: [String],
+  },
+  questionCode: {
+    type: [String],
+  },
   questionTags: {
     type: [String],
     required: "Question must have a tags",

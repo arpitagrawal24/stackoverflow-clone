@@ -1,0 +1,18 @@
+.container {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.editor-content {
+  border: 1px solid #100f0f;
+  border-radius: 4px;
+  padding: 5px;
+  min-height: 200px;
+}
+
+.editor-body {
+  overflow-y: auto;
+  min-height: 200px;
+  border: none;
+}
