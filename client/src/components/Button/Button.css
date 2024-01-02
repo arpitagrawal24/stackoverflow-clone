@@ -1,53 +1,68 @@
 .editor-btns {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 5px;
-    border: 1px solid #100f0f;
-    border-radius: 4px;
-    position: sticky;
-    padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 5px;
+  border: 1px solid #100f0f;
+  border-radius: 4px;
+  position: sticky;
+  padding: 5px;
 }
 
 .editor-btns button {
-    padding: 5px;
-    border: 1px solid #100f0f;
+  padding: 5px;
+  border: 1px solid #100f0f;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .editor-btns button:hover {
-    background-color: #100f0f;
-    color: #fff;
+  background-color: #100f0f;
+  color: #fff;
+  transform: scale(1.1);
 }
 
 .editor-btns button:active {
-    background-color: #100f0f;
-    color: #fff;
+  background-color: #100f0f;
+  color: #fff;
 }
 
 .editor-btns button:focus {
-    background-color: #100f0f;
-    color: #fff;
+  background-color: #100f0f;
+  color: #fff;
+  transform: scale(1.1);
 }
 
 .editor-btns select {
-    padding: 5px;
-    border: 1px solid #100f0f;
+  padding: 5px;
+  border: 1px solid #100f0f;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.color-box{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-emphasis-color: #100f0f;
-    padding: 5px;
-    border: 1px solid #100f0f;
-    border-radius: 4px;
+.editor-btns .active {
+  background-color: #100f0f;
+  color: #fff;
+  transform: scale(0.9);
 }
 
-.color-box input{
-    padding: 5px;
-    border: 1px solid #100f0f;
-    border-radius: 4px;
+.color-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-emphasis-color: #100f0f;
+  padding: 5px;
+  border: 1px solid #100f0f;
+  border-radius: 4px;
+}
+
+.color-box input {
+  padding: 5px;
+  border: 1px solid #100f0f;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }

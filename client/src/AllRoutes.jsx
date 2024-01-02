@@ -8,6 +8,7 @@ import Tags from "./Pages/Tags/Tags";
 import Users from "./Pages/Users/Users";
 import UserProfile from "./Pages/UserProfile/UserProfile";
 import Call from "./Pages/Call/Call";
+import Player from "./Pages/Player/Player";
 
 
 const AllRoutes = ({ slideIn, handleSlideIn }) => {
@@ -46,6 +47,10 @@ const AllRoutes = ({ slideIn, handleSlideIn }) => {
       <Route path="/Call"
         element={
           <Call slideIn={slideIn} handleSlideIn={handleSlideIn} />
+        } />
+        <Route path="/Player"
+        element={
+          <Player slideIn={slideIn} handleSlideIn={handleSlideIn} />
         } />
     </Routes>
   );

@@ -43,11 +43,7 @@ const Button = ({
 
     const handleLinkButtonClick = () => {
         const url = prompt("Enter the URL:");
-        if (url) {
-            handleButtonClick("createLink", url);
-        } else {
-            handleButtonClick("unlink");
-        }
+        document.execCommand("createLink", false, url);
     };
 
     return (
@@ -59,7 +55,7 @@ const Button = ({
                 <button
                     key={index}
                     onClick={() => handleButtonClick(button.action)}
-                    className={`button-${index} ${activeButtons.includes(button.action) ? "bg-gray-300 text-gray-700" : "bg-gray-800 text-white"}`}
+                    className={`button-${index} ${index < 6 && activeButtons.includes(button.action) ? "active" : ""}`}
                 >
                     {button.icon}
                 </button>

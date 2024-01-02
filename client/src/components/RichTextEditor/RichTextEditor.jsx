@@ -14,10 +14,9 @@ const RichTextEditor = ({
     questionCode,
     setQuestionCode,
 }) => {
+    
     const [activeButtons, setActiveButtons] = useState([]);
-
     const [showVideoInput, setShowVideoInput] = useState(false);
-
     const [showCodeInput, setShowCodeInput] = useState(false);
 
     return (

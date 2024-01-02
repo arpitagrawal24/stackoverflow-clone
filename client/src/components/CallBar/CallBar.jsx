@@ -23,11 +23,11 @@ const CallBar = () => {
         const initPeer = () => {
             try {
 
-                console.log('Initializing the home Peer...');
+                // console.log('Initializing the home Peer...');
                 const peer = new Peer();
 
                 peer.on('open', (id) => {
-                    console.log(`${id} connected`);
+                    // console.log(`${id} connected`);
                     setPeerId(id);
                 });
 
