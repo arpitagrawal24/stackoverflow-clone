@@ -1,4 +1,4 @@
-import App from "./App";
+import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import Auth from "./Pages/Auth/Auth";
 import AskQuestion from "./Pages/AskQuestion/AskQuestion";
@@ -10,47 +10,45 @@ import UserProfile from "./Pages/UserProfile/UserProfile";
 import Call from "./Pages/Call/Call";
 
 
-export const AllRoutes = [
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "Auth",
-        element: <Auth />,
-      },
-      {
-        path: "AskQuestion",
-        element: <AskQuestion />,
-      },
-      {
-        path: "Questions",
-        element: <Questions />,
-      },
-      {
-        path: "Questions/:id",
-        element: <DisplayQuestion />,
-      },
-      {
-        path: "Tags",
-        element: <Tags />,
-      },
-      {
-        path: "Users",
-        element: <Users />,
-      },
-      {
-        path: "Users/:id",
-        element: <UserProfile />,
-      },
-      {
-        path: "Call",
-        element: <Call />,
-      },
-    ],
-  },
-];
+const AllRoutes = ({ slideIn, handleSlideIn }) => {
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route path="/Auth" element={<Auth />} />
+      <Route path="/AskQuestion" element={<AskQuestion />} />
+      <Route
+        path="/Questions"
+        element={<Questions slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route
+        path="/Questions/:id"
+        element={
+          <DisplayQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} />
+        }
+      />
+      <Route
+        path="/Tags"
+        element={<Tags slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route
+        path="/Users"
+        element={<Users slideIn={slideIn} handleSlideIn={handleSlideIn} />}
+      />
+      <Route
+        path="/Users/:id"
+        element={
+          <UserProfile slideIn={slideIn} handleSlideIn={handleSlideIn} />
+        }
+      />
+      <Route path="/Call"
+        element={
+          <Call slideIn={slideIn} handleSlideIn={handleSlideIn} />
+        } />
+    </Routes>
+  );
+};
+
+export default AllRoutes;

@@ -1,15 +1,25 @@
+/* eslint-disable react/prop-types */
 import "./LeftSidebar.css";
 import { NavLink } from "react-router-dom";
 import Globe from "../../assets/Globe.svg";
 
-const LeftSidebar = () => {
+const LeftSidebar = ({ slideIn, handleSlideIn }) => {
 
+  const slideInStyle = {
+    transform: "translateX(0%)",
+  };
+
+  const slideOutStyle = {
+    transform: "translateX(-100%)",
+  };
+  
   return (
     <div
       className="left-sidebar"
+      style={slideIn ? slideInStyle : slideOutStyle}
     >
       <nav className="side-nav">
-        <button className="nav-btn">
+        <button onClick={() => handleSlideIn()} className="nav-btn">
           <NavLink to="/" className="side-nav-links" activeclassname="active">
             <p>Home</p>
           </NavLink>
@@ -18,7 +28,7 @@ const LeftSidebar = () => {
           <div>
             <p>PUBLIC</p>
           </div>
-          <button onClick className="nav-btn">
+          <button onClick={() => handleSlideIn()} className="nav-btn">
             <NavLink
               to="/Questions"
               className="side-nav-links"
@@ -28,7 +38,7 @@ const LeftSidebar = () => {
               <p style={{ paddingLeft: "10px" }}> Questions </p>
             </NavLink>
           </button>
-          <button className="nav-btn">
+          <button onClick={() => handleSlideIn()} className="nav-btn">
             <NavLink
               to="/Tags"
               className="side-nav-links"
@@ -38,7 +48,7 @@ const LeftSidebar = () => {
               <p>Tags</p>
             </NavLink>
           </button>
-          <button className="nav-btn">
+          <button onClick={() => handleSlideIn()} className="nav-btn">
             <NavLink
               to="/Users"
               className="side-nav-links"
@@ -48,7 +58,7 @@ const LeftSidebar = () => {
               <p>Users</p>
             </NavLink>
           </button>
-          <button className="nav-btn">
+          <button onClick={() => handleSlideIn()} className="nav-btn">
             <NavLink
               to="/Call"
               className="side-nav-links"

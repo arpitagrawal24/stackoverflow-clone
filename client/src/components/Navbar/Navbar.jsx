@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { jwtDecode } from "jwt-decode";
@@ -12,7 +13,7 @@ import Avatar from "../../components/Avatar/Avatar";
 import "./Navbar.css";
 import { setCurrentUser } from "../../actions/currentUser";
 
-const Navbar = () => {
+const Navbar = ({ handleSlideIn }) => {
   const dispatch = useDispatch();
   var User = useSelector((state) => state.currentUserReducer);
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const Navbar = () => {
   return (
     <nav className="main-nav">
       <div className="navbar">
-        <button className="slide-in-icon">
+        <button className="slide-in-icon" onClick={() => handleSlideIn()}>
           <img src={bars} alt="bars" width="15" />
         </button>
         <div className="navbar-1">
